@@ -1,0 +1,51 @@
+{
+  "name": "rave-javascript-sdk",
+  "version": "1.0.0",
+  "description": "To initialize rave with js frameworks and libraries easily",
+  "main": "build/rave.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kingflamez/rave-javascript-sdk.git"
+  },
+  "keywords": [
+    "Javascript",
+    "rave.flutterwave.com",
+    "github",
+    "Vue",
+    "VueJS",
+    "rave by flutterwave",
+    "sdk",
+    "Open Source",
+    "payments",
+    "kingflamez",
+    "ReactJS",
+    "React",
+    "rave",
+    "payment gateway",
+    "flutterwave",
+    "Gateway"
+  ],
+  "author": "Oluwole Adebiyi <flamekeed@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kingflamez/rave-javascript-sdk/issues"
+  },
+  "homepage": "https://github.com/kingflamez/rave-javascript-sdk#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "webpack": "^2.6.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.1"
+  }
+}
