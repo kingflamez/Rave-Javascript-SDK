@@ -73,8 +73,6 @@ head: {
             .setAmount("3000")
             .setPublicKey("FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X")
             .setModalTitle("Flamez fresh")
-            .setCancel(this.cancel)
-            .setCallback(this.callback)
             .setMeta([
                       { metaname: 'Room', metavalue: "36A" },
                       { metaname: 'Colour', metavalue: "Blue" }
@@ -105,8 +103,6 @@ class Events extends Component {
         .setAmount("3000")
         .setPublicKey("FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X")
         .setModalTitle("Flamez fresh")
-        .setCancel(this.cancel)
-        .setCallback(this.callback)
         .setMeta([
                   { metaname: 'Room', metavalue: "36A" },
                   { metaname: 'Colour', metavalue: "Blue" }
