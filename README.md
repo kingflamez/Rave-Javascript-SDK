@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![npm version](https://badge.fury.io/js/rave-javascript-sdk.svg)](https://badge.fury.io/js/rave-javascript-sdk)
+[![npm](https://img.shields.io/npm/dt/rave-javascript-sdk.svg)](https://www.npmjs.com/package/rave-javascript-sdk)
+
 
 > Implement Rave by Flutterwave easily with Javascript frameworks and Libraries
 
