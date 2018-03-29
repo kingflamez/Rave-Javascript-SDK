@@ -1,7 +1,6 @@
-import axios from 'axios'
+var axios = require('axios')
 
-export default class Rave {
-  constructor() {
+function Rave() {
     this.PBFPubKey = '';
     this.customer_email = '';
     this.customer_phone = '';
@@ -19,79 +18,95 @@ export default class Rave {
     this.custom_title = '';
     this.custom_description = '';
     this.custom_logo = '';
-  }
+}
 
-  set setPublicKey(PBFPubKey) {
+Rave.prototype.setPublicKey = function(PBFPubKey) {
     this.PBFPubKey = PBFPubKey;
-  }
+    return this;
+};
 
-  set setEmail(customer_email) {
+Rave.prototype.setEmail = function(customer_email) {
     this.customer_email = customer_email;
-  }
+    return this;
+};
 
-  set setPhone(customer_phone) {
+Rave.prototype.setPhone = function(customer_phone) {
     this.customer_phone = customer_phone;
-  }
+    return this;
+};
 
-  set setTransactionReference(txref) {
+Rave.prototype.setTransactionReference = function(txref) {
     this.txref = txref;
-  }
+    return this;
+};
 
-  set setAmount(amount) {
+Rave.prototype.setAmount = function(amount) {
     this.amount = amount;
-  }
+    return this;
+};
 
-  set setPaymentMethod(payment_method) {
+Rave.prototype.setPaymentMethod = function(payment_method) {
     this.payment_method = payment_method;
-  }
+    return this;
+};
 
-  set setCancel(onclose) {
+Rave.prototype.setCancel = function(onclose) {
     this.onclose = onclose;
-  }
+    return this;
+};
 
-  set setCallback(callback) {
+Rave.prototype.setCallback = function(callback) {
     this.callback = callback;
-  }
+    return this;
+};
 
-  set setMeta(meta) {
+Rave.prototype.setMeta = function(meta) {
     this.meta = meta;
-  }
+    return this;
+};
 
-  set setCurrency(currency) {
+Rave.prototype.setCurrency = function(currency) {
     this.currency = currency;
-  };
+    return this;
+};
 
-  set setCountry(country) {
+Rave.prototype.setCountry = function(country) {
     this.country = country;
-  }
+    return this;
+};
 
-  set setRedirectURL(redirect_url) {
+Rave.prototype.setRedirectURL = function(redirect_url) {
     this.redirect_url = redirect_url;
-  }
+    return this;
+};
 
-  set setFirstname(customer_firstname) {
+Rave.prototype.setFirstname = function(customer_firstname) {
     this.customer_firstname = customer_firstname;
-  }
+    return this;
+};
 
-
-  set setLastName(customer_lastname) {
+Rave.prototype.setLastName = function(customer_lastname) {
     this.customer_lastname = customer_lastname;
-  }
+    return this;
+};
 
-  set setModalTitle(custom_title) {
+Rave.prototype.setModalTitle = function(custom_title) {
     this.custom_title = custom_title;
-  }
+    return this;
+};
 
-  set setDescription(custom_description) {
+Rave.prototype.setDescription = function(custom_description) {
     this.custom_description = custom_description;
-  }
+    return this;
+};
 
-  set setLogo(custom_logo) {
+Rave.prototype.setLogo = function(custom_logo) {
     this.custom_logo = custom_logo;
-  }
+    return this;
+};
 
-  initialize() {
-    window.getpaidSetup({
+Rave.prototype.initialize = function(){
+	window.getpaidSetup({
       customer_email: this.customer_email,
       customer_phone: this.customer_phone,
       payment_method: this.payment_method,
@@ -110,8 +125,8 @@ export default class Rave {
       custom_description: this.custom_description,
       custom_logo: this.custom_logo
     })
-  }
-}
+};
+
 
 function generateReference() {
   let text = "";
@@ -123,8 +138,7 @@ function generateReference() {
   return 'rave_' + text;
 }
 
-
-export function RequeryTransaction({ live, txref, SECKEY }) {
+function RequeryTransaction({ live, txref, SECKEY }) {
   var url = 'http://flw-pms-dev.eu-west-1.elasticbeanstalk.com'
   if (live) {
     url = 'https://api.ravepay.co'
@@ -141,12 +155,11 @@ export function RequeryTransaction({ live, txref, SECKEY }) {
     });
 }
 
-export function VerifyTransaction({ live, txref, SECKEY }) {
+function VerifyTransaction({ live, txref, SECKEY }) {
   var url = 'http://flw-pms-dev.eu-west-1.elasticbeanstalk.com'
   if (live) {
     url = 'https://api.ravepay.co'
   }
-
 
   return axios.post(`${url}/flwv3-pug/getpaidx/api/verify`, {
 
@@ -162,3 +175,10 @@ export function VerifyTransaction({ live, txref, SECKEY }) {
       throw error;
     });
 }
+
+
+module.exports = {
+    Rave, 
+    VerifyTransaction,
+    RequeryTransaction
+};

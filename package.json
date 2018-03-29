@@ -2,7 +2,7 @@
   "name": "rave-javascript-sdk",
   "version": "1.0.2",
   "description": "To initialize rave with js frameworks and libraries easily",
-  "main": "dist/main.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
@@ -39,15 +39,5 @@
   "homepage": "https://github.com/kingflamez/rave-javascript-sdk#readme",
   "dependencies": {
     "axios": "^0.18.0"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^3.19.0",
-    "eslint-loader": "^2.0.0",
-    "webpack": "^4.3.0",
-    "webpack-cli": "^2.0.13"
   }
 }

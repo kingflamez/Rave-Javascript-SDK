@@ -19,8 +19,9 @@
 ```bash
 npm install rave-javascript-sdk --save
 ```
+### ReactJS and VueJS
 
-Add this Rave Inline Script to your `index.html` for a testing account
+Add this Rave Inline Script to your `index.html` for a test account
 ```html
 <script src="https://rave-api-v2.herokuapp.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 ```
@@ -28,6 +29,29 @@ Add this Rave Inline Script to your `index.html` for a testing account
 Add this Rave Inline Script to your `index.html` for a live account
 ```html
 <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+```
+
+### Nuxt
+Add this to your `nuxt.config.js` or in `Vue Page` head for a test account
+```javascript
+head: {
+    script: [
+      ---
+      { src: 'https://rave-api-v2.herokuapp.com/flwv3-pug/getpaidx/api/flwpbf-inline.js', body: true }
+      ---
+    ]
+  },
+```
+
+Add this to your `nuxt.config.js` or in `Vue Page` head for a live account
+```javascript
+head: {
+    script: [
+      ---
+      { src: 'https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js', body: true }
+      ---
+    ]
+  },
 ```
 
 ## Basic Usage
@@ -45,15 +69,17 @@ Add this Rave Inline Script to your `index.html` for a live account
       buy() {
         var rave = new Rave();
         
-        rave.setEmail='test@test.com'
-        rave.setAmount="3000"
-        rave.setPublicKey="FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X"
-        rave.setModalTitle="Flamez Store"
-        rave.setMeta = [
-                        { metaname: 'Room', metavalue: "36A" },
-                        { metaname: 'Colour', metavalue: "Blue" }
-                      ]
-        rave.initialize()
+        rave.setEmail('flamekeed@gmail.com')
+            .setAmount("3000")
+            .setPublicKey("FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X")
+            .setModalTitle("Flamez fresh")
+            .setCancel(this.cancel)
+            .setCallback(this.callback)
+            .setMeta([
+                      { metaname: 'Room', metavalue: "36A" },
+                      { metaname: 'Colour', metavalue: "Blue" }
+                    ])
+            .initialize()
       }
     }
   }
@@ -74,16 +100,18 @@ class Events extends Component {
 
   buy() {
     var rave = new Rave();
-    
-    rave.setEmail='flamekeed@gmail.com'
-    rave.setAmount="3000"
-    rave.setPublicKey="FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X"
-    rave.setModalTitle="Flamez Store"
-    rave.setMeta = [
-                    { metaname: 'Room', metavalue: "36A" },
-                    { metaname: 'Colour', metavalue: "Blue" }
-                   ]
-    rave.initialize()
+        
+    rave.setEmail('flamekeed@gmail.com')
+        .setAmount("3000")
+        .setPublicKey("FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X")
+        .setModalTitle("Flamez fresh")
+        .setCancel(this.cancel)
+        .setCallback(this.callback)
+        .setMeta([
+                  { metaname: 'Room', metavalue: "36A" },
+                  { metaname: 'Colour', metavalue: "Blue" }
+                ])
+        .initialize()
   }
 
   render() {
@@ -99,8 +127,12 @@ class Events extends Component {
 ## Available Rave methods
 | Name               | Type         | Default  | Required | Description |
 | ------------------ | ------------ | -------- | -------- | ----------- |
+| setPublicKey  | String  |          | Yes       | Your merchant public key provided when you sign up for rave. |
+| setEmail     | String       |          | Yes       | Email of the customer. |
+| setAmount    | String  |        | Yes       | Amount to charge. |
+| setPhone     | String       |          | No       | Phone number of the customer. |
 | setPaymentMethod     | String       | `both`   | No       | This allows you select the payment option you want for your users, this can be `both`, `card`, `ussd` or `account`. |
-| setMeta           | Object Array | `[{}]`     | No       | These are additional information you want to pass through the payment gateway .|
+| setMeta           | Object Array | `[]`     | No       | These are additional information you want to pass through the payment gateway .|
 | setCurrency           | String       | `NGN`    | No       | The currency you want to charge the customer. |
 | setRedirectURL       | String       |          | No       | URL to redirect to when transaction is completed. |
 | setCountry            | String       | `NG`     | No       | The country of operation. |
@@ -110,10 +142,6 @@ class Events extends Component {
 | setDescription | String       |          | No       | Text to be displayed as a short modal description. |
 | setLogo        | String       |          | No       | Link to the Logo image. |
 | setTransactionReference              | String | It will be generated automatically when left blank | No | Unique transaction reference provided by the merchant. |
-| setEmail     | String       |          | Yes       | Email of the customer. |
-| setPhone     | String       |          | No       | Phone number of the customer. |
-| setAmount             | String       |          | Yes       | Amount to charge. |
-| setPublicKey         | String       |          | Yes       | Your merchant public key provided when you sign up for rave. |
 | setCallback           | Function     |          | No      | A function to be called on successful card charge. User’s can always be redirected to a successful or failed page supplied by the merchant here based on response. |
 | setCancel            | Function     |          | No      | A function to be called when the pay modal is closed. |
 
@@ -193,17 +221,17 @@ VerifyTransaction({ live: false, txref: response.tx.txRef, SECKEY: "FLWSECK-XXXX
       buy() {
         var rave = new Rave();
         
-        rave.setEmail='flamekeed@gmail.com'
-        rave.setAmount="3000"
-        rave.setPublicKey="FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X"
-        rave.setModalTitle="Flamez fresh"
-        rave.setCancel=this.cancel
-        rave.setCallback = this.callback
-        rave.setMeta = [
-                        { metaname: 'Room', metavalue: "36A" },
-                        { metaname: 'Colour', metavalue: "Blue" }
-                      ]
-        rave.initialize()
+        rave.setEmail('flamekeed@gmail.com')
+            .setAmount("3000")
+            .setPublicKey("FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X")
+            .setModalTitle("Flamez fresh")
+            .setCancel(this.cancel)
+            .setCallback(this.callback)
+            .setMeta([
+                      { metaname: 'Room', metavalue: "36A" },
+                      { metaname: 'Colour', metavalue: "Blue" }
+                    ])
+            .initialize()
       },
       callback(resp) {
         return VerifyTransaction({ live: false, txref: resp.tx.txRef, SECKEY: "FLWSECK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X" })
@@ -239,18 +267,18 @@ class Events extends Component {
 
   buy() {
     var rave = new Rave();
-    
-    rave.setEmail='flamekeed@gmail.com'
-    rave.setAmount="3000"
-    rave.setPublicKey="FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X"
-    rave.setModalTitle="Flamez Store"
-    rave.setCancel=this.cancel
-    rave.setCallback = this.callback
-    rave.setMeta = [
-                    { metaname: 'Room', metavalue: "36A" },
-                    { metaname: 'Colour', metavalue: "Blue" }
-                   ]
-    rave.initialize()
+
+    rave.setEmail('flamekeed@gmail.com')
+        .setAmount("3000")
+        .setPublicKey("FLWPUBK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X")
+        .setModalTitle("Flamez fresh")
+        .setCancel(this.cancel)
+        .setCallback(this.callback)
+        .setMeta([
+                  { metaname: 'Room', metavalue: "36A" },
+                  { metaname: 'Colour', metavalue: "Blue" }
+                ])
+        .initialize()
   }
 
 
@@ -258,7 +286,6 @@ class Events extends Component {
     return VerifyTransaction({ live: false, txref: resp.tx.txRef, SECKEY: "FLWSECK-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-X" })
       .then(function (response) {
         console.log(response);
-        ;
       })
       .catch(function (error) {
         console.log(error);
