@@ -7,7 +7,7 @@ export default class Rave {
     this.customer_phone = '';
     this.payment_method = 'both';
     this.amount = '';
-    this.txref = getReference('rave');
+    this.txref = generateReference();
     this.onclose = null;
     this.callback = null;
     this.meta = [];
@@ -113,14 +113,14 @@ export default class Rave {
   }
 }
 
-export function getReference(prefix) {
+function generateReference() {
   let text = "";
   let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-+.,";
 
   for (let i = 0; i < 15; i++)
     text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-  return prefix + '_' + text;
+  return 'rave_' + text;
 }
 
 

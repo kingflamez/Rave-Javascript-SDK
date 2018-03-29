@@ -1,13 +1,19 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true,
+        "codeFrame": false
+    },
     "parserOptions": {
         "sourceType": "module"
     },
     "rules": {
+        "strict": 0,
         "indent": [
             "error",
             "tab"
