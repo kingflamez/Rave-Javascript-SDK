@@ -139,7 +139,7 @@ function generateReference() {
 }
 
 function RequeryTransaction({ live, txref, SECKEY }) {
-  var url = 'http://flw-pms-dev.eu-west-1.elasticbeanstalk.com'
+    var url = 'https://ravesandboxapi.flutterwave.com'
   if (live) {
     url = 'https://api.ravepay.co'
   }
@@ -156,10 +156,11 @@ function RequeryTransaction({ live, txref, SECKEY }) {
 }
 
 function VerifyTransaction({ live, txref, SECKEY }) {
-  var url = 'http://flw-pms-dev.eu-west-1.elasticbeanstalk.com'
+    var url = 'https://ravesandboxapi.flutterwave.com'
   if (live) {
     url = 'https://api.ravepay.co'
   }
+
 
   return axios.post(`${url}/flwv3-pug/getpaidx/api/verify`, {
 
