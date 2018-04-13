@@ -1,6 +1,6 @@
 {
   "name": "rave-javascript-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "To initialize rave with js frameworks and libraries easily",
   "main": "src/index.js",
   "scripts": {
